@@ -1,0 +1,49 @@
+/*
+	=== Composite Key/Foreign key ===
+
+ - Exemplo, temos uma tabela Aluno e outra tabela chamada curso, 
+ para fazer a ligação entre essas duas tabelas, criamos uma terceira tabela que é chamada
+ de associativa.
+  E nela vai ter o progresso do aluno em determinado curso.
+  
+  Sintaxe:
+ */
+
+  CREATE TABLE [ProgressoCurso](
+     [AlunoID] INT NOT NULL 
+    ,[CursoID] INT NOT NULL
+    ,[Progresso] INT NOT NULL
+    ,[UltimaAtualizacao] DATETIME NOT NULL DEFAULT(GETDATE())
+
+    CONSTRAINT PK_ProgressoCurso PRIMARY KEY([AlunoID],[CursoID]) --< Chave composta.
+)
+GO 
+
+/*
+ - Para criar uma Foreign key, que seria uma chave estrangeira.
+ É preciso passar a referencia da tabela (nome) e a coluna que sera como referencia (ID)
+ 
+	Sintaxe:
+*/
+
+--Precisa ter a tabela de categoria criada.
+
+CREATE TABLE [Categoria](
+     [ID] INT NOT NULL IDENTITY(1, 1)
+    ,[Nome] NVARCHAR(80) NOT NULL
+
+    CONSTRAINT [PK_Categoria] PRIMARY KEY ([ID])
+)
+GO
+
+
+CREATE TABLE [Curso](
+     [Id] INT NOT NULL 
+    ,[Nome] NVARCHAR(80) NOT NULL
+    ,[CategoriaID] INT NOT NULL
+
+   ,CONSTRAINT [PK_Curso] PRIMARY KEY([Id]) 
+   ,CONSTRAINT [FK_Curso_Categoria] FOREIGN KEY([ID]) --<-Para criar uma foreign key, eu passo o nome da chave, e o ID da tabela (categoria).
+	REFERENCES [Categoria]([ID]) --<- Precisa referenciar a tabela, passando o nome da tabela e o campo que sera referenciado.
+)
+GO

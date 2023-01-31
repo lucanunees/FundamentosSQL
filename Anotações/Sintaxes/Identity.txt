@@ -1,0 +1,21 @@
+
+	=== IDENTITY ===
+
+ O IDENTITY serve como um elemento de incremento, 
+ele adiciona automaticamente conforme for determinado.
+	Utilizando o identity eu não preciso saber o ultimo identificador.. ou seja o ultimo registro.
+	
+
+	Sintaxe:
+	
+CREATE TABLE [Curso] (
+	[ID] INT NOT NULL IDENTITY(1, 1) -- Ele vai incrementar de 1 em 1, então o proximo registro automaticamente será 2.
+   ,[Nome] NVARCHAR(80) NOT NULL
+   ,[CategoriaId] INT NOT NULL
+ 
+    CONSTRAINT [PK_Curso] PRIMARY KEY ([ID]),
+    CONSTRAINT [FK_Curso_Categoria] FOREIGN KEY ([CategoriaId])
+	REFERENCES [Categoria]([ID])
+	
+ )
+ GO

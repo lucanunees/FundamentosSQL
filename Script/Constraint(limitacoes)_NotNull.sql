@@ -1,0 +1,35 @@
+/*
+	=== CONSTRAINT ===
+	
+ - O constraint serve para limitar as colunas, por padrão os campos 
+    criados vem como nullable ou seja podemos armazenar nada nos valores. 
+    Por exemplo uma determinada coluna pode receber valores NULL, ou outro tipo de valor,
+    sem ser o correspondente (string, int, char etc).
+
+	Sintaxe:
+*/
+
+CREATE TABLE [Aluno](
+     [Id] INT NOT NULL -- <- Colocando a constraint Not null, significa que esse campo não pode receber null.
+    ,[Nome] NVARCHAR(80) NOT NULL
+    ,[Nascimento] DATETIME NOT NULL
+    ,[Active] BIT  -- <-- Dentro tem que passar o valor default. 
+)
+GO 
+
+/*
+ - Caso eu precise alterar/Definir alguma constraint que no momento da criação da tabela
+    acabei esquecendo, é possivel utilizar o Alter table e adicionar.
+
+	Sintaxe:
+*/
+
+	ALTER TABLE [Aluno]
+	 ALTER COLUMN [Active] BIT NOT NULL
+
+/*
+ - Caso você tentar converter uma coluna que ja tenha um dado armazenado nullable, ou seja, vazio
+    ao executar o alter ele irá dar erro. Pois ele não consegue converter esse valor.
+    Neste caso, você precisa adicionar o Default(), para ele adicionar um valor padrão
+    Obs: Não funciona utilizando o alter table, tem que colocar o default na criação da tabela.
+*/
