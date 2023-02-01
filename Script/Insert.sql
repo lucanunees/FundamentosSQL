@@ -27,7 +27,7 @@ GO
 
 -- Realizando o insert na tabela de Categoria
 INSERT INTO [Categoria]([Nome]) --<-- Campos que iremos realizar o insert, como colocamos ID = identity, não precisamos passar o ID, ele é gerado automaticamente.
-VALUES('Backend') --<-- valores referente aos campos.
+VALUES('BackEnd') --<-- valores referente aos campos.
 
 INSERT INTO [Categoria] ([Nome])
 VALUES('FrontEnd')
@@ -35,6 +35,8 @@ VALUES('FrontEnd')
 INSERT INTO [Categoria] ([Nome])
 VALUES('Mobile')
 
+INSERT INTO [Categoria] ([Nome])
+VALUES('Azure')
 
 
 -- Realizando o insert na tabela de Curso
