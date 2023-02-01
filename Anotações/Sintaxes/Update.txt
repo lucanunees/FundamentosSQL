@@ -1,0 +1,19 @@
+
+	=== UPDATE ===
+
+ O update serve para atualizar algum dado da tabela.
+ 
+ Utilizar o Begin Transaction
+ 
+  Sintaxe:
+  
+  BEGIN TRANSACTION
+  
+  UPDATE TABLE [CATEGORIA]
+	
+	SET [NOME] = ''
+  WHERE
+  
+ -- COMMIT -- Confirma as mudanças.
+ -- ROLLBACK -- Desfaz as atualizações.
+ 

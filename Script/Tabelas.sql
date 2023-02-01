@@ -39,8 +39,8 @@ GO
 
 
  CREATE TABLE [Categoria](
-  [ID] INT NOT NULL 
- ,[Nome] INT NOT NULL
+  [ID] INT NOT NULL IDENTITY(1, 1)
+ ,[Nome] NVARCHAR(80) NOT NULL
   
   CONSTRAINT [PK_Categoria] PRIMARY KEY([ID])
 )
