@@ -19,7 +19,7 @@ uma categoria ID, ele não iria trazer.
 		FROM [Curso]
 			INNER JOIN [Categoria] -- <--Coloco a tabela que eu quero juntar as informações, ou seja, vou trazer tudo que tem na tabela curso que é relacionado com a tabela categoria.
 				ON [Curso].[CategoriaID] = [Categoria].[ID]  -- <--No "ON" é o campo que eu quero trazer da tabela 
-															 -- curso comparando com a de categoria.
+				
 
 
 	=== LEFT JOIN ===
@@ -91,21 +91,16 @@ UNION                   -- <-- Com os dados similares ele faz a junção das dua
 
 USE [Cursos]
 
-    SELECT TOP 100 
-        [Categoria].[Nome], -- Se eu colocar uma coluna aqui eu preciso adicionar no group by também
+    SELECT TOP 100   
         COUNT([Curso].[CategoriaID]) AS [Cursos] -- Estou contando quantos cursos tem com a categoria ID       
+       ,[Categoria].[Nome], -- Se eu colocar uma coluna aqui eu preciso adicionar no group by também
     FROM [Categoria]  
         INNER JOIN [Curso] 
                 ON [Curso].[CategoriaID] = [Categoria].[ID] -- Estou relacionando a categoria do curso, com o ID da categoria.
     GROUP BY 
     [Curso].[CategoriaID] -- E agrupando a quantidade de curso e ID da categoria.
     ,[Categoria].[Nome]
-
-
-	 SELECT TOP 100 *
-	FROM Curso
-	
-	
+		
 	 === Having ===
 
      Depois de utilizar o Group by, não é possivel adicionar o where, por isso utilizamos o having.
@@ -129,3 +124,4 @@ USE [Cursos]
 
     HAVING -- Estou agrupando as informações e o Having é lido como "Onde" curso.categoriaID é = 2, ou seja ele vai me mostrar no retorno apenas os cursos que tem a categoria ID igual a 2.
         COUNT([Curso].[CategoriaID]) = 2 -- É preciso colocar a mesma sintaxe que da coluna, porém não funciona o ALIAS (Apelido).
+
