@@ -92,6 +92,23 @@ CREATE TABLE [Course]
 );
 GO
 
+CREATE TABLE [CareerItem]
+(
+     [CareerItemID] UNIQUEIDENTIFIER NOT NULL   
+    ,[CourseID] UNIQUEIDENTIFIER NOT NULL
+    ,[Title] NVARCHAR(160) NOT NULL
+    ,[Description] TEXT NOT NULL
+    ,[Order] TINYINT NOT NULL
+    
+
+     CONSTRAINT [PK_CareerItem] PRIMARY KEY ([CareerItemID], [CourseID])
+    ,CONSTRAINT [FK_CareerItem_Career_CareerID] FOREIGN KEY ([CareerItemID])
+        REFERENCES [Career] ([ID]) ON DELETE NO ACTION
+    ,CONSTRAINT [FK_CareerItem_Course_CourseID] FOREIGN KEY ([CourseID])
+        REFERENCES [Course] ([ID]) ON DELETE NO ACTION
+)
+
+
 CREATE TABLE [StudentCourse]
 (
      [CourseID] UNIQUEIDENTIFIER NOT NULL
@@ -102,9 +119,9 @@ CREATE TABLE [StudentCourse]
     ,[LastUpdateDate] DATETIME NULL DEFAULT(GETDATE())
 
      CONSTRAINT [PK_StudentCourse] PRIMARY KEY ([CourseID], [StudentID])
-    ,CONSTRAINT [FK_StudentCourse_Course_CourseID] FOREIGN KEY ([CourseID])
+     ,CONSTRAINT [FK_StudentCourse_Course_CourseID] FOREIGN KEY ([CourseID])
         REFERENCES [Course] ([ID])
-    ,CONSTRAINT [FK_StudentCourse_Student_StudentID] FOREIGN KEY ([StudentID])
+     ,CONSTRAINT [FK_StudentCourse_Student_StudentID] FOREIGN KEY ([StudentID])
         REFERENCES [Student] ([ID])
 );
 GO
