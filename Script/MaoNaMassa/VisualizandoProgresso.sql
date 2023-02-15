@@ -34,3 +34,16 @@ WHERE
     AND [StudentCourse].[Progress] >= 0
 ORDER BY
     [StudentCourse].[LastUpdateDate] DESC
+
+
+---- Estrutura utilizando o left join.. no caso o retorno dessa query será todos os cursos e se
+-- nas tabelas utilizadas no left tiver algum curso relacionado ele retornará na query, caso contrario retornará null.
+SELECT 
+     [Student].[Name] as [Student]
+    ,[Course].[Title] as [Course]
+    ,[StudentCourse].[Progress]
+    ,[StudentCourse].[LastUpdateDate]
+FROM
+     [Course]
+     LEFT JOIN [StudentCourse] ON [StudentCourse].[CourseId] = [Course].[Id]
+     LEFT JOIN [Student] ON [StudentCourse].[StudentId] = [Student].[Id]
