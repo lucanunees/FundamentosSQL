@@ -45,10 +45,3 @@ WHERE
 ORDER BY 
     [CreateDate] DESC -- <-- Mesmo não tendo o createDate como coluna o order by já orderna pela data de criação.
 */
-
-
-SELECT 
-    *
-FROM
-    vwCourses
-ORDER BY [CreateDate] DESC
